@@ -1,0 +1,21 @@
+GEM
+  remote: https://www.rubygems.org/
+  specs:
+    ffi (1.12.1)
+    haml (5.1.2)
+      temple (>= 0.8.0)
+      tilt
+    sassc (2.2.1)
+      ffi (~> 1.9)
+    temple (0.8.2)
+    tilt (2.0.10)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  haml
+  sassc
+
+BUNDLED WITH
+   1.17.2
