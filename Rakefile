@@ -1,6 +1,7 @@
 require 'date'
 require 'haml'
 require 'sassc'
+require 'webrick'
 
 S3_BUCKET = 'bucket_name'.freeze
 CLOUDFRONT_DISTRIBUTION = 'distribution_name'.freeze
@@ -53,6 +54,16 @@ task invalidate: :sync do
   print "Invalidating #{paths}..."
   `aws cloudfront create-invalidation --distribution #{CLOUDFRONT_DISTRIBUTION} --paths #{paths}`
   puts 'done.'
+end
+
+task serve: :build do
+  root = File.expand_path './public'
+
+  server = WEBrick::HTTPServer.new Port: 4567, DocumentRoot: root
+
+  trap('INT') { server.shutdown }
+
+  server.start
 end
 
 task upload: :invalidate
