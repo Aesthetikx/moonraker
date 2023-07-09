@@ -1,6 +1,6 @@
 require 'date'
 require 'haml'
-require 'sassc'
+require 'sass-embedded'
 require 'webrick'
 
 S3_BUCKET = 'bucket_name'.freeze
@@ -33,9 +33,7 @@ task :style do
   FileUtils.mkdir_p('./public')
 
   File.open('./public/style.css', 'w') do |file|
-    sass = File.read('./style.scss')
-
-    file.puts SassC::Engine.new(sass, style: :compressed).render
+    file.puts Sass.compile('./style.scss', style: :compressed).css
   end
 
   puts 'done.'
