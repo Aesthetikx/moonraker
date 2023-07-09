@@ -16,8 +16,8 @@ task :markup do
 
   pages.each do |page|
     File.open("./public/#{page}.html", 'w') do |file|
-      haml = Haml::Engine.new(File.read('./layout.haml')).render do
-        Haml::Engine.new(File.read("./#{page}.haml")).render
+      haml = Haml::Template.new('./layout.haml', escape_html: false).render do
+        Haml::Template.new("./#{page}.haml").render
       end
 
       file.puts haml
