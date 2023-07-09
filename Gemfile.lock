@@ -1,12 +1,12 @@
 GEM
   remote: https://www.rubygems.org/
   specs:
-    ffi (1.12.1)
+    ffi (1.15.5)
     haml (6.1.1)
       temple (>= 0.8.2)
       thor
       tilt
-    sassc (2.2.1)
+    sassc (2.4.0)
       ffi (~> 1.9)
     temple (0.10.2)
     thor (1.2.2)
