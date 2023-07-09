@@ -33,7 +33,7 @@ task :style do
   FileUtils.mkdir_p('./public')
 
   File.open('./public/style.css', 'w') do |file|
-    file.puts Sass.compile('./style.scss', style: :compressed).css
+    file.puts Sass.compile('./style.sass', style: :compressed).css
   end
 
   puts 'done.'
